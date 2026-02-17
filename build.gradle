@@ -5,6 +5,7 @@ plugins {
     id 'checkstyle'
     id 'pmd'
     id 'com.github.spotbugs' version '6.4.8'
+    id "org.sonarqube" version "7.1.0.6387"
 }
 
 sourceSets {
