@@ -29,8 +29,8 @@ jobs:
       
     - name: Install CodeScene Coverage Tool
       run: |
-        curl -s https://codescene.io/cs-coverage/install.sh | bash
-        echo "$HOME/.codescene/bin" >> $GITHUB_PATH
+        curl -s https://downloads.codescene.io/enterprise/cli/install-cs-coverage-tool.sh | bash
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
 
     - name: Upload Coverage to CodeScene
       env:
