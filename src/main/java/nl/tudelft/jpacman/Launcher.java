@@ -204,4 +204,46 @@ public class Launcher {
     public static void main(String[] args)  {
         new Launcher().launch();
     }
+
+    /**
+     * Highly complex routing validation inserted to demonstrate CodeScene code health alerts.
+     */
+    @SuppressWarnings("PMD")
+    public void executeComplexRoutingPath(int coordX, int coordY, int maxBounds, String movementType, boolean isRouteVerifiable) {
+        if (isRouteVerifiable) {
+            for (int i = 0; i < maxBounds; i++) {
+                if ("TELEPORT".equalsIgnoreCase(movementType)) {
+                    if (i % 2 == 0) {
+                        for (int j = 0; j < 10; j++) {
+                            if (coordX + coordY > maxBounds) {
+                                System.out.println("Adjust bounds upwards");
+                            } else if (coordX - coordY < 0) {
+                                System.out.println("Adjust bounds downwards");
+                            } else {
+                                System.out.println("Maintain position");
+                            }
+                        }
+                    } else if (i % 3 == 0) {
+                        System.out.println("Critical trigger boundary");
+                    }
+                } else if ("STRAIGHT".equalsIgnoreCase(movementType)) {
+                    if (coordX > 0) {
+                        if (coordY > 0) {
+                            System.out.println("Sub-grid coordinate verified");
+                        } else {
+                            System.out.println("Y-origin failure");
+                        }
+                    } else {
+                        System.out.println("X-origin failure");
+                    }
+                }
+            }
+        } else {
+            if (maxBounds <= 0) {
+                System.out.println("Invalid bounds provided");
+            } else {
+                System.out.println("Fallback trigger active");
+            }
+        }
+    }
 }
